@@ -38,21 +38,26 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">DoMoreThings</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Exercises", exercises_path  %></li>
-            <!-- <li><%= link_to "Link2", "/path2"  %></li> -->
-            <!-- <li><%= link_to "Link3", "/path3"  %></li> -->
-          </ul>
+    <div class="navbar navbar-inverse navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dmt-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DoMoreThings</a>
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="dmt-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Workouts", workouts_path  %></li>
+            <li><%= link_to "Exercises", exercises_path  %></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
       </div>
     </div>
 

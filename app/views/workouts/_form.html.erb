@@ -1,0 +1,42 @@
+<%= form_for @set, :url => { :action => 'add_set' }, :html => { :class => "form-horizontal workout" } do |f| %>
+
+    <% if @workout.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <select name="workout_set[exercise_id]" class="form-control">
+      <% Exercise.all.each do |exercise| %>
+          <option value="<%= exercise.id %>"><%= exercise.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :reps %>
+    <%= f.text_field :reps, :class => 'form-control' %>
+    <%= error_span(@set[:reps]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :weight %>
+    <%= f.text_field :weight, :class => 'form-control' %>
+    <%= error_span(@set[:weight]) %>
+  </div>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            workouts_path, :class => 'btn btn-default' %>
+
+<% end %>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   resources :exercises
+  resources :workouts
+
+  post 'workouts/:id/add_set' => 'workouts#add_set'
+  
+  # get 'workouts' => 'workouts#index'
+  # get 'workouts/:id' => 'workouts#show'
+  # get 'workouts/new' => 'workouts#new'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
