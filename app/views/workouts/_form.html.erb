@@ -1,4 +1,4 @@
-<%= form_for @set, :url => { :action => 'add_set' }, :html => { :class => "form-horizontal workout" } do |f| %>
+<%= form_for @set, :url => { :action => 'add_set' } do |f| %>
 
     <% if @workout.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -25,13 +25,13 @@
 
   <div class="form-group">
     <%= f.label :reps %>
-    <%= f.text_field :reps, :class => 'form-control' %>
+    <%= f.number_field :reps, :class => 'form-control', :min => 0 %>
     <%= error_span(@set[:reps]) %>
   </div>
 
   <div class="form-group">
     <%= f.label :weight %>
-    <%= f.text_field :weight, :class => 'form-control' %>
+    <%= f.number_field :weight, :class => 'form-control', :min => 0 %>
     <%= error_span(@set[:weight]) %>
   </div>
 

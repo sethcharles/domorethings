@@ -5,8 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Set ID</th>
-      <th>Exercise ID</th>
       <th>Exercise</th>
       <th>Weight</th>
       <th>Reps</th>
@@ -16,8 +14,6 @@
   <tbody>
     <% @workout.workout_sets.each do |set| %>
       <tr>
-        <td><%= set.id %></td>
-        <td><%= set.exercise.id %></td>
         <td><%= set.exercise.name %></td>
         <td><%= set.weight %></td>
         <td><%= set.reps %></td>
