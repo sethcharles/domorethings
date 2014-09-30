@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+
+  # Devise routes
+  devise_for :users
+
+  # Set application root
+  root 'workouts#index'
+
   resources :exercises
   resources :workouts
 
   post 'workouts/:id/add_set' => 'workouts#add_set'
-  
+
   # get 'workouts' => 'workouts#index'
   # get 'workouts/:id' => 'workouts#show'
   # get 'workouts/new' => 'workouts#new'
