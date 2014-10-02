@@ -1,8 +1,9 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy, :add_set]
+  before_action :authenticate_user!
 
   def index
-    @workouts = Workout.all
+    @workouts = current_user.workouts
   end
 
   def edit
@@ -19,6 +20,7 @@ class WorkoutsController < ApplicationController
 
   def new
     workout = Workout.new
+    workout.user = current_user
     workout.started_at = Time.zone.now
     workout.save!
 
@@ -37,7 +39,7 @@ class WorkoutsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workout
-      @workout = Workout.find(params[:id])
+      @workout = current_user.workouts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
