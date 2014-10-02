@@ -17,7 +17,7 @@
 
   <div class="form-group">
     <select name="workout_set[exercise_id]" class="form-control">
-      <% Exercise.all.each do |exercise| %>
+      <% current_user.exercises.each do |exercise| %>
           <option value="<%= exercise.id %>"><%= exercise.name %></option>
       <% end %>
     </select>
