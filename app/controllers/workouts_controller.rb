@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show, :edit, :update, :destroy, :add_set]
+  before_action :set_workout, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -7,15 +7,15 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    @set = WorkoutSet.new
-    @set.workout = @workout
-  end
-
-  def add_set
-    set = WorkoutSet.new(workoutset_params)
-    set.workout = @workout
-    set.save!
-    redirect_to @workout
+    if (params[:set])
+      @set = WorkoutSet.find_or_initialize_by(id: params[:set], workout: @workout)
+      if (@set.new_record?)
+        flash.now[:error] = 'Could not find set in this workout.'
+      end
+    else
+      @set = WorkoutSet.new
+      @set.workout = @workout
+    end
   end
 
   def new
